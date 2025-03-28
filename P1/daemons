@@ -22,8 +22,8 @@ vrrpd=no
 pathd=no
 
 # If this option is set the /etc/init.d/frr script automatically loads the config via "vtysh -b" when the servers are started.
-
 vtysh_enable=yes
+
 zebra_options="  -A 127.0.0.1 -s 90000000"
 bgpd_options="   -A 127.0.0.1"
 ospfd_options="  -A 127.0.0.1"
