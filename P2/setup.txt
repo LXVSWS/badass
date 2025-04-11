@@ -1,11 +1,29 @@
 vtysh
 open a shell for FRR daemons
 
+conf t
+switch to configuration mode
+
 sh int
 show all network interfaces
 
-conf t
-switch to configuration mode
+sh ip ospf int
+show ospf interfaces
+
+sh ip ospf neighbor
+show ospf neighbor interfaces
+
+sh ip route
+show routes
+
+sh isis int
+show isis interfaces
+
+sh isis neighbor
+show isis neighbor interfaces
+
+ping ...
+ping an ip address
 
 __________________________________________
 
@@ -54,23 +72,3 @@ ip router isis 1
 int eth0
 ip router isis 1
 -> setup isis (all interfaces)
-
-__________________________________________
-
-do sh ip ospf int
-show ospf interfaces
-
-do sh ip ospf neighbor
-show ospf neighbor interfaces
-
-do sh ip route
-show routes
-
-do sh isis int
-show isis interfaces
-
-do sh isis neighbor
-show isis neighbor interfaces
-
-do ping ...
-ping an ip address
