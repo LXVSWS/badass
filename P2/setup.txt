@@ -1,0 +1,76 @@
+vtysh
+open a shell for FRR daemons
+
+sh int
+show all network interfaces
+
+conf t
+switch to configuration mode
+
+__________________________________________
+
+specific to router 1 :
+
+int lo
+ip addr 1.1.1.1/32
+assign ip address (loopback interface)
+
+int eth0
+ip addr 10.1.1.1/30
+assign ip address (eth0 interface)
+
+router ospf
+network 0.0.0.0/0 are 0
+-> setup ospf (all interfaces)
+
+router isis 1
+net 49.0000.0000.0001.00
+int lo
+ip router isis 1
+int eth0
+ip router isis 1
+-> setup isis (all interfaces)
+
+__________________________________________
+
+specific to router 2 :
+
+int lo
+ip addr 1.1.1.2/32
+-> assign ip address (loopback interface)
+
+int eth0
+ip addr 10.1.1.2/30
+-> assign ip address (eth0 interface)
+
+router ospf
+network 0.0.0.0/0 are 0
+-> setup ospf (all interfaces)
+
+router isis 1
+net 49.0000.0000.0002.00
+int lo
+ip router isis 1
+int eth0
+ip router isis 1
+-> setup isis (all interfaces)
+
+__________________________________________
+
+do sh ip ospf int
+show ospf interfaces
+
+do sh ip ospf neighbor
+show ospf neighbor interfaces
+
+do sh ip route
+show routes
+
+do sh isis int
+show isis interfaces
+
+do sh isis neighbor
+show isis neighbor interfaces
+
+do ping ...
+ping an ip address
