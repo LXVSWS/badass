@@ -19,6 +19,3 @@ COPY setup.sh /usr/local/bin/setup.sh
 
 # Make the setup script executable
 RUN chmod +x /usr/local/bin/setup.sh
-
-# Run the setup script when the container starts
-CMD /usr/local/bin/setup.sh && /usr/bin/frr

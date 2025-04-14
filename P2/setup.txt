@@ -114,3 +114,6 @@ ip addr show br0
 
 ip -d link show vxlan10
 -> show vxlan details (outside vtysh)
+
+docker exec -it container_name /usr/local/bin/setup.sh
+-> execute the setup script into the container (outside vtysh)
