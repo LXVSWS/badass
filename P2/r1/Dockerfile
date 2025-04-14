@@ -19,3 +19,6 @@ COPY setup.sh /usr/local/bin/setup.sh
 
 # Make the setup script executable
 RUN chmod +x /usr/local/bin/setup.sh
+
+# Set entrypoint to run setup.sh and then the original docker-start
+ENTRYPOINT ["/bin/bash", "-c", "/usr/local/bin/setup.sh && exec /usr/lib/frr/docker-start"]
