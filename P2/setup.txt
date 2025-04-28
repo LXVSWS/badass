@@ -30,6 +30,9 @@ ip addr show br0
 
 ip addr show vxlan10
 -> show vxlan details (outside vtysh)
+
+bridge fdb show
+-> show mac addresses (outside vtysh)
 __________________________________________
 
 specific to router 1 :
