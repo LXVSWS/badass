@@ -1,7 +1,8 @@
 #DEBIAN commands
+##GNS3
 run-gns3:
 	pipx inject gns3-gui gns3-server PyQt5
-	gns3server 
+	gns3server
 
 gns3-setup:
 	sudo apt update
