@@ -10,5 +10,5 @@ ip addr add 20.1.1.2/24 dev vxlan10
 ip link set dev vxlan10 up
 
 # Add interfaces to the bridge (br0)
-brctl addif br0 eth1
+ip link show eth1 2>/dev/null && brctl addif br0 eth1 || true
 brctl addif br0 vxlan10
