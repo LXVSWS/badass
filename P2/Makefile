@@ -3,7 +3,7 @@ MAKEFLAGS 		+= 	--no-print-directory
 
 run: clean
 	make create-venv
-	. gns3-env/bin/activate && pip install gns3-gui gns3-server PyQt5
+	. gns3-env/bin/activate && pip install gns3-gui gns3-server PyQt5 docker
 	@echo "create Docker image"
 	cd r1 && docker build -t custom-frr-1:latest .
 	cd r2 && docker build -t custom-frr-2:latest .
@@ -42,6 +42,7 @@ installer:
 	make setup-docker
 	make gns3-setup
 	make ubridge-install
+	make dynamics-install
 	sudo modprobe vxlan
 	sudo modprobe bridge
 	sudo modprobe veth
@@ -67,12 +68,23 @@ gns3-setup:
 	sudo apt update
 	sudo apt install -y python3 python3-pip pipx python3-pyqt5 python3-pyqt5.qtwebsockets \
 	python3-pyqt5.qtsvg qemu-system-x86 qemu-utils libvirt-clients libvirt-daemon-system \
-	virtinst software-properties-common ca-certificates curl gnupg2 busybox-static xterm vpcs
-	sudo snap install snapd
-	sudo snap install dynamips
+	virtinst software-properties-common ca-certificates curl gnupg2 busybox-static xterm vpcs libelf-dev
 	pipx install gns3-server 
 	pipx install gns3-gui
 	pipx ensurepath
+
+dynamics-install:
+	sudo apt update
+	sudo apt install -y git libelf-dev
+	pip install cmake
+	git clone https://github.com/GNS3/dynamips.git
+	cd dynamips
+	mkdir build
+	cd build
+	cmake ..
+	make
+	sudo make install
+	rm -rf dynamips	
 
 ubridge-install:
 	sudo apt install -y git build-essential libpcap-dev
