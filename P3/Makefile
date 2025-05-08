@@ -2,20 +2,33 @@
 MAKEFLAGS 		+= 	--no-print-directory
 
 run: clean
-	pipx inject gns3-gui gns3-server PyQt5
+	make create-venv
+	. gns3-env/bin/activate && pip install gns3-gui gns3-server PyQt5
 	@echo "create Docker image"
-	docker build -t custom-frr:latest .
+	cd r1 && docker build -t frr-1:latest .
+	cd r2 && docker build -t frr-2:latest .	
+	cd r3 && docker build -t frr-3:latest .
+	cd r4 && docker build -t frr-4:latest .
 	@make images
-	@gns3
+	. gns3-env/bin/activate && gns3
+
+create-venv:
+	@echo "create virtualenv"
+	python3 -m venv gns3-env
 
 docker-status:
 	sudo systemctl status docker
+
+docker-ps:
+	docker ps -a
+	docker logs <container_id>
 
 images:
 	docker images
 
 clean:
 	docker system prune -a --volumes
+	rm -rf gns3-env
 
 docker-run-custom:
 	@echo "run Docker image"
@@ -27,6 +40,18 @@ installer:
 	make setup-docker
 	make gns3-setup
 	make ubridge-install
+	sudo modprobe vxlan
+	sudo modprobe bridge
+	sudo modprobe veth
+	sudo modprobe ip_tables
+	sudo modprobe ip6_tables
+	sudo modprobe ipt_MASQUERADE
+	sudo modprobe ip6t_REJECT
+	sudo modprobe ipt_REJECT    
+	sudo modprobe ip6t_LOG   
+	sudo modprobe ipt_LOG    
+	sudo modprobe ip6t_rt       
+
 
 setup-docker:
 	sudo apt update
@@ -56,10 +81,4 @@ ubridge-install:
 	cd ..
 	sudo setcap cap_net_admin,cap_net_raw=ep /usr/local/bin/ubridge
 	rm -rf ubridge
-
-
-	
-
-
-
 
