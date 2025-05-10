@@ -2,6 +2,15 @@
 MAKEFLAGS 		+= 	--no-print-directory
 
 run: clean
+	@read -p "Choose configuration (1: static / 2: dynamic): " choice; \
+	if [ "$$choice" = "1" ]; then \
+		make set-static; \
+	elif [ "$$choice" = "2" ]; then \
+		make set-dynamic; \
+	else \
+		echo "Invalid choice. Please choose 'dynamic' or 'static'."; \
+		exit 1; \
+	fi
 	make create-venv
 	. gns3-env/bin/activate && pip install gns3-gui gns3-server PyQt5 docker
 	@echo "create Docker image"
@@ -10,9 +19,13 @@ run: clean
 	@make images
 	. gns3-env/bin/activate && gns3
 
-create-venv:
-	@echo "create virtualenv"
-	python3 -m venv gns3-env
+set-static:
+	@echo "Switching all daemons to static (pimd=no)"
+	@sed -i 's/^pimd=.*/pimd=no/' r1/daemons r2/daemons
+
+set-dynamic:
+	@echo "Switching all daemons to dynamic (pimd=yes)"
+	@sed -i 's/^pimd=.*/pimd=yes/' r1/daemons r2/daemons
 
 docker-status:
 	sudo systemctl status docker
@@ -21,6 +34,10 @@ docker-ps:
 	docker ps -a
 	docker logs <container_id>
 
+create-venv:
+	@echo "create virtualenv"
+	python3 -m venv gns3-env
+	
 images:
 	docker images
 
@@ -62,6 +79,7 @@ setup-docker:
 	sudo systemctl start docker
 	sudo systemctl enable docker
 	sudo usermod -aG docker $(USER)
+	groups
 	sudo systemctl restart docker
 
 gns3-setup:
@@ -69,6 +87,9 @@ gns3-setup:
 	sudo apt install -y python3 python3-pip pipx python3-pyqt5 python3-pyqt5.qtwebsockets \
 	python3-pyqt5.qtsvg qemu-system-x86 qemu-utils libvirt-clients libvirt-daemon-system \
 	virtinst software-properties-common ca-certificates curl gnupg2 busybox-static xterm vpcs libelf-dev
+	sudo usermod -aG wireshark $(USER)
+	groups
+	sudo dpkg-reconfigure wireshark-common
 	pipx install gns3-server 
 	pipx install gns3-gui
 	pipx ensurepath
@@ -94,5 +115,6 @@ ubridge-install:
 	sudo make -C ubridge install
 	cd ..
 	sudo setcap cap_net_admin,cap_net_raw=ep /usr/local/bin/ubridge
+	sudo setcap cap_net_raw,cap_net_admin+eip /usr/bin/dumpcap
+	sudo setcap cap_net_raw,cap_net_admin+eip /bin/dumpcap
 	rm -rf ubridge
-

@@ -1,5 +1,12 @@
 vtysh
 open a shell for FRR daemons
+    show running-config
+    show ip pim interface
+    show ip igmp group
+    show ip pim neighbor
+
+ip neigh show 
+to see router neighbor
 
 conf t
 switch to configuration mode

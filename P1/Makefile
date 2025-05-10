@@ -34,6 +34,7 @@ setup-docker:
 	sudo systemctl start docker
 	sudo systemctl enable docker
 	sudo usermod -aG docker $(USER)
+	groups
 	sudo systemctl restart docker
 
 gns3-setup:
@@ -41,6 +42,9 @@ gns3-setup:
 	sudo apt install -y python3 python3-pip pipx python3-pyqt5 python3-pyqt5.qtwebsockets \
 	python3-pyqt5.qtsvg qemu-system-x86 qemu-utils libvirt-clients libvirt-daemon-system \
 	virtinst software-properties-common ca-certificates curl gnupg2 busybox-static xterm
+	sudo usermod -aG wireshark $(USER)
+	groups
+	sudo dpkg-reconfigure wireshark-common
 	sudo snap install snapd
 	sudo snap install dynamips
 	pipx install gns3-server 
@@ -55,6 +59,8 @@ ubridge-install:
 	sudo make -C ubridge install
 	cd ..
 	sudo setcap cap_net_admin,cap_net_raw=ep /usr/local/bin/ubridge
+	sudo setcap cap_net_raw,cap_net_admin+eip /usr/bin/dumpcap
+	sudo setcap cap_net_raw,cap_net_admin+eip /bin/dumpcap
 	rm -rf ubridge
 
 
