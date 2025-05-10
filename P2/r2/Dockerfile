@@ -20,5 +20,8 @@ COPY setup.sh /usr/local/bin/setup.sh
 # Make the setup script executable
 RUN chmod +x /usr/local/bin/setup.sh
 
+# Install iproute2 and bridge-utils to have the ip command available
+RUN apk add --no-cache iproute2 bridge-utils
+
 # Run setup script and then the original docker-start
 CMD ["/bin/bash", "-c", "/usr/local/bin/setup.sh && /usr/lib/frr/docker-start"]

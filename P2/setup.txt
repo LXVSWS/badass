@@ -5,6 +5,8 @@ open a shell for FRR daemons
     show ip igmp group
     show ip pim neighbor
 
+bridge fdb show br br0
+
 ip neigh show 
 to see router neighbor
 
