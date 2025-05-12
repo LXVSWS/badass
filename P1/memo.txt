@@ -1,0 +1,30 @@
+GNS3 :
+
+GNS3, ou Graphical Network Simulator-3, est un simulateur de réseaux qui permet de créer et tester des réseaux sans utiliser de matériel physique
+Il fonctionne selon un modèle client-serveur : le client est l'interface graphique avec laquelle l'utilisateur envoie les commandes au serveur, qui exécute la simulation et renvoie les résultats au client
+
+The global operation and the interest of BGP :
+
+Aussi connu sous le nom de Border Gateway Protocol, BGP est un protocol utilisé et mis en place afin d'echanger des informations de routage entre les différents réseaux qui composent internet aussi appelé systemes autonomes. (AS)
+BGP aide ses réseaux a communiauer afin d'éviter les boucles.
+2 types de sessions BGP :
+- External BGP (EBGP) entre 2 AS différents
+- Internal BGP (IBGP) entre routeurs au seins d'un meme AS
+Le but principal de BGP est de trouver le meilleur chemin pour l'acheminement des données. ex : si une route a déja été utilisé il en trouve une autre.
+
+The differences between layer 2 and layer 3 in a network :
+
+Layer 2 = Communication sur un même réseau (adresses MAC)
+Layer 3 = Communication entre réseaux différents (adresses IP)
+
+What is a packet routing software :
+
+C'est un programme utilisé par les routeurs qui gère la manière dont les données (paquets) sont acheminées sur un réseau grace a une table de routage
+
+◦ What is the BGPD service requested in the subject.
+
+  BGPD (Border Gateway Protocole Daemon) est un processus qui implemente le protocole BGP sur un serveur/routeur.
+
+◦ What is the OSPFD service requested in the topic.
+◦ What is the routing engine service requested in the topic.
+What is Busybox asked in the subject
