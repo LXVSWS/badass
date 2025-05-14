@@ -26,5 +26,10 @@ C'est un programme utilisé par les routeurs qui gère la manière dont les donn
   BGPD (Border Gateway Protocole Daemon) est un processus qui implemente le protocole BGP sur un serveur/routeur.
 
 ◦ What is the OSPFD service requested in the topic.
+
+  OSPFD (open shortest path first daemon) est processus qui met en place OSPF
+
 ◦ What is the routing engine service requested in the topic.
+
+  le service de routage (Frrrouting dans notre cas) est un service qui gere l'ensemble des process et protocoles necessaire au bon fonctionnement de notre infrastructure reseau 
 What is Busybox asked in the subject
