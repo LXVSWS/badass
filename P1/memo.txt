@@ -5,7 +5,7 @@ Il fonctionne selon un modèle client-serveur : le client est l'interface graphi
 
 BGP :
 
-BGP, ou Border Gateway Protocol, est un protocole de routage utilisé pour échanger des informations entre les grands réseaux qui composent Internet, appelés systèmes autonomes (ou AS pour Autonomous Systems)
+BGP, ou Border Gateway Protocol, est un protocole de routage externe utilisé pour échanger des informations entre les grands réseaux qui composent Internet, appelés systèmes autonomes (ou AS pour Autonomous Systems)
 L'objectif de BGP est de choisir le meilleur chemin pour acheminer les données à travers différents réseaux, tout en évitant les boucles de routage
 BGP fonctionne selon deux modes :
 eBGP (External BGP) : utilisé pour échanger des routes entre deux AS différents
@@ -19,7 +19,7 @@ Layer 3 = Communication entre réseaux différents (adresses IP)
 
 Packet routing software :
 
-C'est un ensemble de programmes (ex : FRRouting) qui implémente plusieurs services de routage et gère l'ensemble du processus de routage dans un réseau
+C'est un ensemble de programmes (ex : FRRouting) qui gère la façon dont les données circulent sur un réseau
 Il utilise une table de routage pour déterminer les meilleurs chemins pour le routage des paquets de données
 
 BGPD service :
@@ -32,10 +32,16 @@ OSPFD service :
 OSPFD, ou Open Shortest Path First Daemon, est un processus qui implemente le protocole OSPF sur un routeur ou un serveur
 OSPF est un protocole de routage interne, utilisé pour trouver automatiquement le chemin le plus court entre les routeurs a l'interieur d'un réseau local
 
-Routing engine service :
+Routing engine service (IS-IS) :
 
-C'est un processus qui implémente un protocole de routage et prend des décisions sur le chemin à emprunter pour chaque paquet de données dans le réseau
+IS-IS, ou Intermediate System to Intermediate System, est un protocole de routage interne qui permet aux routeurs de trouver automatiquement le meilleur chemin pour envoyer les données dans un grand réseau
+Il est moins courant que OSPF, mais très utilisé dans les grands réseaux
 
 Busybox :
 
-Busybox est un logiciel qui implémente un grand nombre de commandes UNIX dans le meme executable, ce qui le rend léger et parfait pour tout type de systemes embarqués.
+Busybox est un programme tout-en-un qui implémente un grand nombre de commandes UNIX dans le meme executable, ce qui le rend léger et parfait pour les environnements avec peu de mémoire ou d’espace disque
+
+VXLAN :
+
+VXLAN, ou Virtual eXtensible LAN, est une technologie qui permet de connecter des machines situées sur plusieurs réseaux différents comme si elles étaient dans un seul réseau local virtuel
+À l’inverse, le VLAN sert uniquement à diviser un réseau local physique en plusieurs réseaux logiques séparés
