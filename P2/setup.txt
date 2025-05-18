@@ -42,6 +42,12 @@ ip addr show vxlan10
 
 bridge fdb show
 -> show mac addresses (outside vtysh)
+
+sh bgp summary
+show bgp general informations
+
+sh bgp l2vpn evpn
+show bgp detailed informations
 __________________________________________
 
 specific to router 1 :
