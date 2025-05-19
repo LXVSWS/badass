@@ -41,7 +41,31 @@ Busybox :
 
 Busybox est un programme tout-en-un qui implémente un grand nombre de commandes UNIX dans le meme executable, ce qui le rend léger et parfait pour les environnements avec peu de mémoire ou d’espace disque
 
+__P2__
+
 VXLAN :
 
 VXLAN, ou Virtual eXtensible LAN, est une technologie qui permet de connecter des machines situées sur plusieurs réseaux différents comme si elles étaient dans un seul réseau local virtuel
 À l’inverse, le VLAN sert uniquement à diviser un réseau local physique en plusieurs réseaux logiques séparés
+
+what is a switch encountered in the subject :
+
+What is a bridge encountered in the subject :
+
+The difference between broadcast and multicast : 
+
+Explain the expected operation of the topology indicated in the subject :
+
+__P3__
+
+What is BGP-EVPN requested in the subject :
+
+The principle of road reflection requested in the subject :
+
+What VTEP means :
+
+What VNI means :
+
+Difference between type 2 and type 3 roads :
+
+Explain the expected operation of the topology :
