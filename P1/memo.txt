@@ -59,6 +59,9 @@ Un bridge (ou Pont reseau) est un mecanisme de liaison entre le reseau virtuel (
 
 The difference between broadcast and multicast : 
 
+Le broadcast envoie un message a tous les appareils du reseau local, A l'inverse le multicast envoie le message a un groupe specifique d'appareils et seulement ceux inscrits au groupe recoivent le message.
+L'utilisation du broadcast peut saturer le reseau si celui ci est trop vaste. tandis que le multicast permet d'optimiser la bande passante.
+
 Explain the expected operation of the topology indicated in the subject :
 
 __P3__
