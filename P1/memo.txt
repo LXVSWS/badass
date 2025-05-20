@@ -50,7 +50,12 @@ VXLAN, ou Virtual eXtensible LAN, est une technologie qui permet de connecter de
 
 what is a switch encountered in the subject :
 
+Un switch (ou commutateur) est un equipement reseau virtuel qui est utilise pour connecter plusieurs appareils dans un meme reseau local (LAN) afin de permettre leur communication efficace.
+si on veut ping d'un pc a un autre sur le meme reseau LAN, ils passeront par le switch.
+
 What is a bridge encountered in the subject :
+
+Un bridge (ou Pont reseau) est un mecanisme de liaison entre le reseau virtuel (Gns3) et le reseau physique. (ordinateur ou box internet)
 
 The difference between broadcast and multicast : 
 
