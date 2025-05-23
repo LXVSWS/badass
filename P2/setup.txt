@@ -1,4 +1,5 @@
-vtysh
+# vtysh
+
 open a shell for FRR daemons
     show running-config
     show ip pim interface
@@ -47,7 +48,7 @@ sh bgp summary
 show bgp general informations
 
 sh bgp l2vpn evpn
-show bgp detailed informations
+show bgp detailed informations like type 2/3, routes...
 __________________________________________
 
 specific to router 1 :
