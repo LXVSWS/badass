@@ -72,6 +72,7 @@ gns3-setup:
 	groups
 	sudo dpkg-reconfigure wireshark-common
 	pipx install gns3-server 
+	pipx upgrade gns3-server
 	pipx install gns3-gui
 	pipx upgrade gns3-gui
 	pipx ensurepath
