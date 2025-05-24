@@ -16,7 +16,7 @@ Ils font partie du modèle OSI (qui décrit comment les données circulent sur u
 Layer 2 = Communication sur un même réseau (adresses MAC)
 Layer 3 = Communication entre réseaux différents (adresses IP)
 
-****************************
+---
 
 # P1 Notions
 
@@ -44,8 +44,7 @@ Il est moins courant que OSPF, mais très utilisé dans les grands réseaux
 
 Busybox est un programme tout-en-un qui implémente un grand nombre de commandes UNIX dans le meme executable, ce qui le rend léger et parfait pour les environnements avec peu de mémoire ou d’espace disque
 
-
----------------
+---
 
 # P1 Pratique
 

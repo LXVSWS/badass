@@ -25,3 +25,8 @@ La difference entre les deux concerne les informations que BGP transporte pour V
 ## But de la topologie du sujet
 
 Faire communiquer une multitude de machines via BGP-EVPN & VXLAN
+
+---
+
+# P3 Pratique
+
