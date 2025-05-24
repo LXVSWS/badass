@@ -27,6 +27,19 @@ installer:
 	make setup-docker
 	make gns3-setup
 	make ubridge-install
+	make dynamips-installq
+	sudo modprobe vxlan
+	sudo modprobe bridge
+	sudo modprobe veth
+	sudo modprobe ip_tables
+	sudo modprobe ip6_tables
+	sudo modprobe ipt_MASQUERADE
+	sudo modprobe ip6t_REJECT
+	sudo modprobe ipt_REJECT    
+	sudo modprobe ip6t_LOG   
+	sudo modprobe ipt_LOG    
+	sudo modprobe ip6t_rt     
+	export PATH=$PATH:/sbin:/usr/sbin  
 
 setup-docker:
 	sudo apt update
@@ -41,15 +54,28 @@ gns3-setup:
 	sudo apt update
 	sudo apt install -y python3 python3-pip pipx python3-pyqt5 python3-pyqt5.qtwebsockets \
 	python3-pyqt5.qtsvg qemu-system-x86 qemu-utils libvirt-clients libvirt-daemon-system \
-	virtinst software-properties-common ca-certificates curl gnupg2 busybox-static xterm
+	virtinst software-properties-common ca-certificates curl gnupg2 busybox-static xterm vpcs libelf-dev
 	sudo usermod -aG wireshark $(USER)
 	groups
 	sudo dpkg-reconfigure wireshark-common
-	sudo snap install snapd
-	sudo snap install dynamips
 	pipx install gns3-server 
 	pipx install gns3-gui
+	pipx upgrade gns3-gui
 	pipx ensurepath
+
+dynamips-install:
+	sudo apt update
+	sudo apt install -y git libelf-dev
+	sudo apt install cmake
+	git clone https://github.com/GNS3/dynamips.git
+	cd dynamips
+	mkdir build
+	cd build
+	cmake ..
+	make
+	sudo make install
+	cd ../..	
+	rm -rf dynamips	
 
 ubridge-install:
 	sudo apt install -y git build-essential libpcap-dev
@@ -62,10 +88,3 @@ ubridge-install:
 	sudo setcap cap_net_raw,cap_net_admin+eip /usr/bin/dumpcap
 	sudo setcap cap_net_raw,cap_net_admin+eip /bin/dumpcap
 	rm -rf ubridge
-
-
-	
-
-
-
-

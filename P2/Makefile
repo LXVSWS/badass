@@ -59,7 +59,7 @@ installer:
 	make setup-docker
 	make gns3-setup
 	make ubridge-install
-	make dynamics-install
+	make dynamips-install
 	sudo modprobe vxlan
 	sudo modprobe bridge
 	sudo modprobe veth
@@ -92,12 +92,13 @@ gns3-setup:
 	sudo dpkg-reconfigure wireshark-common
 	pipx install gns3-server 
 	pipx install gns3-gui
+	pipx upgrade gns3-gui
 	pipx ensurepath
 
-dynamics-install:
+dynamips-install:
 	sudo apt update
 	sudo apt install -y git libelf-dev
-	pip install cmake
+	sudo apt install cmake
 	git clone https://github.com/GNS3/dynamips.git
 	cd dynamips
 	mkdir build
@@ -105,6 +106,7 @@ dynamics-install:
 	cmake ..
 	make
 	sudo make install
+	cd ../..	
 	rm -rf dynamips	
 
 ubridge-install:
