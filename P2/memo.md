@@ -20,3 +20,43 @@ Le broadcast envoie un message a tous les appareils du reseau local, tandis que 
 ## But de la topologie du sujet
 
 Faire communiquer deux machines connectees a deux routeurs differents grace a la technologie VXLAN
+
+---------------
+
+# P2 Commands
+
+## Static
+
+- **Pas de protocole de gestion dynamique :** 
+
+Aucun échange de messages PIM ou IGMP entre routeurs.
+
+Tout le trafic envoyé à l’adresse multicast (ex : 239.1.1.1) est diffusé à tous les membres du groupe, qu’ils en aient besoin ou non.
+
+- **Pas d’optimisation :** 
+
+Tous les routeurs/noeuds reçoivent le trafic multicast, même s’ils n’ont pas de clients intéressés.
+
+> Lancer un wireshark pour voir le traffic IPv4/ICMP sur le lien
+
+> On peut voir le VxLAN ID sur le groupe Virtual eXtensible LAN du sniffer
+
+## Dynamic
+
+- **Gestion dynamique** via le Protocole PIM actif : 
+
+Les routeurs échangent des paquets PIMv2 (Hello World, ...) pour construire dynamiquement l’arbre de distribution multicast.
+
+Un routeur est inscrit avec `ìp pim`, nous avons fait cela sur les interfaces `vxlan10` et `eth0` de chaque routeur.
+
+- **Optimisation du trafic** : 
+
+Seuls les routeurs/noeuds ayant des membres IGMP inscrits reçoivent le trafic multicast.
+
+- **Gestion dynamique des membres** : 
+
+L’arbre multicast s’adapte automatiquement selon la présence ou l’absence de membres.
+
+> Pour voir les paquets avec le VxLAN on peut utiliser le filtre 
+`vxlan`
+

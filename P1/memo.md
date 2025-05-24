@@ -43,3 +43,10 @@ Il est moins courant que OSPF, mais très utilisé dans les grands réseaux
 ## Busybox
 
 Busybox est un programme tout-en-un qui implémente un grand nombre de commandes UNIX dans le meme executable, ce qui le rend léger et parfait pour les environnements avec peu de mémoire ou d’espace disque
+
+
+---------------
+
+# P1 Commands
+
+Nous pouvons voir les services actifs demandés via un simple `ps` dans chaque routeur concerné.
