@@ -47,6 +47,6 @@ Busybox est un programme tout-en-un qui implémente un grand nombre de commandes
 
 ---------------
 
-# P1 Commands
+# P1 Pratique
 
 Nous pouvons voir les services actifs demandés via un simple `ps` dans chaque routeur concerné.
